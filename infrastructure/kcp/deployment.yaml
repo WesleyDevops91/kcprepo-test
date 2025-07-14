@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kcp
+  namespace: kcp-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kcp
+  template:
+    metadata:
+      labels:
+        app: kcp
+    spec:
+      containers:
+        - name: kcp
+          image: ghcr.io/kcp-dev/kcp:v0.27.0
+          args:
+            - start
+            - --etcd-servers=http://etcd.kcp-system.svc.cluster.local:2379
+            - --secure-port=6444          # KCP’s HTTPS port
+            - --unsafe-listen-address=0.0.0.0
+          ports:
+            - name: https
+              containerPort: 6444
