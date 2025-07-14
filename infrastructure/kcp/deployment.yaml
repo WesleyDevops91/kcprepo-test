@@ -20,7 +20,6 @@ spec:
             - start
             - --etcd-servers=http://etcd.kcp-system.svc.cluster.local:2379
             - --secure-port=6444          # KCP’s HTTPS port
-            - --unsafe-listen-address=0.0.0.0
           ports:
             - name: https
               containerPort: 6444
