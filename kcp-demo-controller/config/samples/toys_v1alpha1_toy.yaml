@@ -1,0 +1,9 @@
+apiVersion: toys.demo.kcp.io/v1alpha1
+kind: Toy
+metadata:
+  labels:
+    app.kubernetes.io/name: kcp-demo-controller
+    app.kubernetes.io/managed-by: kustomize
+  name: toy-sample
+spec:
+  # TODO(user): Add fields here

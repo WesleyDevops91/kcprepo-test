@@ -1,0 +1,32 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - toys.demo.kcp.io
+  resources:
+  - toys
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - toys.demo.kcp.io
+  resources:
+  - toys/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - toys.demo.kcp.io
+  resources:
+  - toys/status
+  verbs:
+  - get
+  - patch
+  - update

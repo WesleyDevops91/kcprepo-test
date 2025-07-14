@@ -1,0 +1,29 @@
+# This rule is not used by the project kcp-demo-controller itself.
+# It is provided to allow the cluster admin to help manage permissions for users.
+#
+# Grants read-only access to toys.demo.kcp.io resources.
+# This role is intended for users who need visibility into these resources
+# without permissions to modify them. It is ideal for monitoring purposes and limited-access viewing.
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: kcp-demo-controller
+    app.kubernetes.io/managed-by: kustomize
+  name: toy-viewer-role
+rules:
+- apiGroups:
+  - toys.demo.kcp.io
+  resources:
+  - toys
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - toys.demo.kcp.io
+  resources:
+  - toys/status
+  verbs:
+  - get

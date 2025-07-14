@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kcp-demo-controller
+  namespace: kcp-system
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: kcp-demo-controller
+rules:
+  - apiGroups: ["toys.demo.kcp.io"]
+    resources: ["toys"]
+    verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: kcp-demo-controller
+roleRef:
+  kind: ClusterRole
+  name: kcp-demo-controller
+  apiGroup: rbac.authorization.k8s.io
+subjects:
+  - kind: ServiceAccount
+    name: kcp-demo-controller
+    namespace: kcp-system

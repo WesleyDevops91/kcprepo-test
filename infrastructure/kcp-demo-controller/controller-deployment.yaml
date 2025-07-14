@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kcp-demo-controller
+  namespace: kcp-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kcp-demo-controller
+  template:
+    metadata:
+      labels:
+        app: kcp-demo-controller
+    spec:
+      serviceAccountName: kcp-demo-controller
+      containers:
+        - name: manager
+          image: ghcr.io/wesleydevops91/kcp-demo-controller:v0.1.0
+          args: ["--leader-elect"]

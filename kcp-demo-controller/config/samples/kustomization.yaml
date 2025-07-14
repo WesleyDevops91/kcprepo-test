@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- toys_v1alpha1_toy.yaml
+# +kubebuilder:scaffold:manifestskustomizesamples
